@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% load static %}   
+
+
+{% block content %}
+    <h2 class="text-center pt-3">Projectos:</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center py-3">
+    {% if not projects %}
+        <h3>No hay proyectos agregados</h3>
+    {% else %}
+        {% for project in projects %}
+            <div class="card bg-dark mx-2" style="width: 18rem;">
+                <img src="{{project.image.url}}" class="card-img-top" alt="project picture">
+                <div class="card-body">
+                    <h3 class="card-title text-center">{{project.name}}</h3>
+                    <p class="card-text">{{project.resume}}</p>
+                </div>
+                <ul class="list-group list-group-flush bg-dark">
+                <li class="list-group-item bg-dark text-white">Lenguajes:
+                    {% for language in project.languages.all %}
+                        {{language}}
+                        {% if forloop.counter < project.languages.all|length %}
+                            ,
+                        {% endif %}
+                    {% endfor %}
+                </li>
+                <li class="list-group-item bg-dark text-white"><a href="{{project.link_github}}" target="_blank"><i class="bi bi-github" style="font-size:25px;"></i></a></li>
+                </ul>
+                <div class="card-body">
+                <a href="{% url 'project' project.id%}" class="btn btn-primary">Mas info...</a>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+{% endblock %}
