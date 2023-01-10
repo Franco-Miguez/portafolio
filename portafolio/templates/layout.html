@@ -13,13 +13,13 @@
     <script src="{% static 'js/bootstrap.js' %}"></script>
 </head>
 <body class="bg-dark-second text-white">
-    {% include 'parts/navbar.html'%}
+    {% include 'parts_web/navbar.html'%}
     
-    {% include 'parts/header.html'%}
+    {% include 'parts_web/header.html'%}
 
     {% block content %}
     {% endblock %}
 
-    {% include 'parts/footer.html'%}
+    {% include 'parts_web/footer.html'%}
 </body>
 </html>
