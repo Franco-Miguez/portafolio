@@ -19,7 +19,7 @@ header {
 }
 
 .front-face-img:hover{
-    filter: grayscale(100%);
+    content: url('../images/icono.svg');
 }
 
 header h1, header h2{
