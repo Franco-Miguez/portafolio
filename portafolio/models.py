@@ -19,6 +19,7 @@ class Project(models.Model):
     languages = models.ManyToManyField(Language, verbose_name="Lenguajes", blank=True)
     image = models.ImageField(verbose_name="Imagen", upload_to='media/image')
     link_github = models.URLField(verbose_name="Link GitHub")
+    link_project = models.URLField(verbose_name="Link Proyecto", null=True, blank=True)
     
     class Meta:
         verbose_name = "Projecto"

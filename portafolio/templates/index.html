@@ -16,15 +16,24 @@
                     <p class="card-text">{{project.resume}}</p>
                 </div>
                 <ul class="list-group list-group-flush bg-dark">
-                <li class="list-group-item bg-dark text-white">Lenguajes:
-                    {% for language in project.languages.all %}
-                        {{language}}
-                        {% if forloop.counter < project.languages.all|length %}
-                            ,
+                    <li class="list-group-item bg-dark text-white">Lenguajes:
+                        {% for language in project.languages.all %}
+                            {{language}}
+                            {% if forloop.counter < project.languages.all|length %}
+                                ,
+                            {% endif %}
+                        {% endfor %}
+                    </li>
+                    <li class="list-group-item bg-dark text-white">
+                        <a href="{{project.link_github}}" style="text-decoration: none;" target="_blank">
+                            <i class="bi bi-github" style="font-size:25px;"></i>
+                        </a>
+                        {% if project.link_project != None %}
+                            <a href="{{project.link_project}}" target="_blank">
+                                <i class="bi bi-link-45deg" style="font-size:25px;"></i>
+                            </a>
                         {% endif %}
-                    {% endfor %}
-                </li>
-                <li class="list-group-item bg-dark text-white"><a href="{{project.link_github}}" target="_blank"><i class="bi bi-github" style="font-size:25px;"></i></a></li>
+                    </li>
                 </ul>
                 <div class="card-body">
                 <a href="{% url 'project' project.id%}" class="btn btn-primary">Mas info...</a>
