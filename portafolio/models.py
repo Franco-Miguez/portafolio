@@ -16,7 +16,7 @@ class Project(models.Model):
     name = models.CharField(verbose_name="Nombre", max_length=50)
     resume = models.CharField(verbose_name="Resumen", max_length=150)
     description = RichTextField(verbose_name="Descripción")
-    languages = models.ManyToManyField(Language, verbose_name="Lenguajes", null=True, blank=True)
+    languages = models.ManyToManyField(Language, verbose_name="Lenguajes", blank=True)
     image = models.ImageField(verbose_name="Imagen", upload_to='media/image')
     link_github = models.URLField(verbose_name="Link GitHub")
     

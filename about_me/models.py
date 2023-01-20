@@ -9,6 +9,7 @@ class Work(models.Model):
     description = RichTextField(verbose_name="Descripción")
     start_work = models.DateField(verbose_name="Desde")
     end_work = models.DateField(verbose_name="Hasta", null=True)
+    working = models.BooleanField(verbose_name="Trabajando actualmente", null=True)
     
     class Meta:
         verbose_name = "Trabajo"
@@ -19,10 +20,11 @@ class Work(models.Model):
 
 class Course(models.Model):
     name = models.CharField(verbose_name="Curso", max_length=150)
-    languages = models.ManyToManyField(portafolio.models.Language, verbose_name="Lenguajes", null=True, blank=True)
+    languages = models.ManyToManyField(portafolio.models.Language, verbose_name="Lenguajes", blank=True)
     description = RichTextField(verbose_name="Descripción")
     start_course = models.DateField(verbose_name="Desde")
     end_course = models.DateField(verbose_name="Hasta", null=True)
+    studying = models.BooleanField(verbose_name="Estudiando actualmente", null=True)
     
     class Meta:
         verbose_name = "Curso"
@@ -33,8 +35,8 @@ class Course(models.Model):
     
 class Info(models.Model):
     name = models.CharField(verbose_name="Nombre completo", max_length=20)
-    image_front = models.ImageField(validators="Imagen perfil", upload_to="media/image")
-    image_logo = models.ImageField(validators="Imagen Logo", upload_to="media/image")
+    image_front = models.ImageField(verbose_name="Imagen perfil", upload_to="media/image")
+    image_logo = models.ImageField(verbose_name="Imagen Logo", upload_to="media/image")
     job = models.CharField(verbose_name="Puesto", max_length=200)
     linkedin_link = models.URLField(verbose_name="Link Linkedin")
     linkedin_name = models.CharField(verbose_name="Nombre linkedin", max_length=50)
@@ -46,5 +48,12 @@ class Info(models.Model):
     web_name = models.CharField(verbose_name="Nombre Sitio Web", max_length=50)
     update = models.DateField(verbose_name="Actualizado")
     email = models.EmailField(verbose_name="Email Contacto")
+    
+    class Meta:
+        verbose_name = "Informacion"
+        verbose_name_plural = "Informaciones"
+    
+    def __str__(self) -> str:
+        return self.name
     
     
