@@ -35,9 +35,10 @@ class Course(models.Model):
     
 class Info(models.Model):
     name = models.CharField(verbose_name="Nombre completo", max_length=20)
-    image_front = models.ImageField(verbose_name="Imagen perfil", upload_to="media/image")
+    image_front = models.ImageField(verbose_name="Imagen perfil",upload_to="media/image")
     image_logo = models.ImageField(verbose_name="Imagen Logo", upload_to="media/image")
     job = models.CharField(verbose_name="Puesto", max_length=200)
+    description = RichTextField(verbose_name="Descripción", null=True)
     linkedin_link = models.URLField(verbose_name="Link Linkedin")
     linkedin_name = models.CharField(verbose_name="Nombre linkedin", max_length=50)
     github_link = models.URLField(verbose_name="Link Github")
